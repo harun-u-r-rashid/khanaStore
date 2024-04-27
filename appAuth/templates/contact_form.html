@@ -1,0 +1,11 @@
+<!-- contact_form.html -->
+<html>
+<body>
+    <h1>Contact Form</h1>
+    <form action="{% url 'contact-form' %}" method="POST">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
