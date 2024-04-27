@@ -30,7 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://khanastore.onrender.com/'
+]
 
 # Application definition
 
