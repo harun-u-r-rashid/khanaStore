@@ -7,3 +7,5 @@ urlpatterns = [
     path('update_cart/<int:cart_id>/',views.UpdateCartView.as_view(),name='update_cart'),
 ]
 
+
+
