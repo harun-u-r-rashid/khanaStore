@@ -11,11 +11,19 @@ from django.template.loader import render_to_string
 from django.shortcuts import redirect
 from rest_framework.views import APIView
 from rest_framework import serializers
-from .serializers import RegistrationSerializer, LoginSerializer
+from .serializers import RegistrationSerializer, LoginSerializer, UserSerializer
 from .models import Contact
 from .serializers import ContactSerializer
 from rest_framework import status
+from rest_framework import viewsets
 
+
+class UserViewSet(viewsets.ModelViewSet):
+       queryset = User.objects.all()
+       serializer_class = UserSerializer
+
+
+       
 
 
 class RegistrationApiView(APIView):
