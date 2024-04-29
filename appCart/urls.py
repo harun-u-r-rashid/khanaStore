@@ -1,10 +1,15 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
 
 
-urlpatterns = [
-    path('',views.CartView.as_view(),name='carts'), 
-    path('update_cart/<int:cart_id>/',views.UpdateCartView.as_view(),name='update_cart'),
+router = DefaultRouter()
+router.register('', views.CartViewSet)
+
+
+urlpatterns = [  
+    path('', include(router.urls)),
+   
 ]
 
 

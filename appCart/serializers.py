@@ -4,11 +4,7 @@ from .models import Cart
 
 
 
-class SimpleFoodSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Food
-        fields = ["id","food_name", "price"]
-        
+   
 
 class CartSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField(many=False)
@@ -16,11 +12,6 @@ class CartSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Cart
-        fields = ['user', 'food_name', 'quantity']
+        fields = '__all__'
 
 
-
-class CartUpdateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cart
-        fields = ['food', 'quantity']
