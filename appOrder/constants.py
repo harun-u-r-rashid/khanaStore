@@ -1,6 +1,6 @@
-ORDER_STATUS = [
-        ('PENDING', 'PENDING'),
-        ('COMPLETE', 'COMPLETE'),
-        ('CANCELED', 'CANCELED'),
-]
+# ORDER_STATUS = [
+#         ('PENDING', 'PENDING'),
+#         ('COMPLETE', 'COMPLETE'),
+#         ('CANCELED', 'CANCELED'),
+# ]
 

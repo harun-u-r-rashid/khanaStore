@@ -67,35 +67,35 @@
 #         fields = ["status"]
 
 
-from .models import Order
-from rest_framework import serializers
+# from .models import Order
+# from rest_framework import serializers
 
 
 
-class OrderSerializer(serializers.ModelSerializer):
-    user = serializers.StringRelatedField(many=False)
-    food_name = serializers.CharField(source='food.food_name')
+# class OrderSerializer(serializers.ModelSerializer):
+#     user = serializers.StringRelatedField(many=False)
+#     food_name = serializers.CharField(source='food.food_name')
     
-    class Meta:
-        model = Order
-        fields = ['user', 'food_name', 'status', 'quantity']
+#     class Meta:
+#         model = Order
+#         fields = ['user', 'food_name', 'status', 'quantity']
 
         
 
 
-class OrderStatusUpdateSerializer(serializers.ModelSerializer):
-        status = serializers.CharField(max_length = 30)
-        class Meta:
-                model = Order
-                fields = ['status']
+# class OrderStatusUpdateSerializer(serializers.ModelSerializer):
+#         status = serializers.CharField(max_length = 30)
+#         class Meta:
+#                 model = Order
+#                 fields = ['status']
 
 
 
 
 
-class OrderUpdateSerializer(serializers.ModelSerializer):
+# class OrderUpdateSerializer(serializers.ModelSerializer):
        
-        class Meta:
-                model = Order
-                fields = ['first_name', 'last_name', 'phone', 'email', 'state', 'city', 'country', 'quantity']
+#         class Meta:
+#                 model = Order
+#                 fields = ['first_name', 'last_name', 'phone', 'email', 'state', 'city', 'country', 'quantity']
 

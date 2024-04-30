@@ -16,16 +16,16 @@
 # ] 
 
 
-from django.urls import path
-from . import views
+# from django.urls import path
+# from . import views
 
 
-urlpatterns = [
-    path('',views.OrderView.as_view(),name='orders'), 
-    path('update_order/<int:order_id>/',views.UpdateOrderView.as_view(),name='update_order'),
-    path('update_status/<int:order_id>/',views.UpdateOrderStatusView.as_view(),name='update_status'),
-    path('user/<int:user_id>/orders',views.UserOrdersView.as_view(),name='users_orders'),
+# urlpatterns = [
+#     path('',views.OrderView.as_view(),name='orders'), 
+#     path('update_order/<int:order_id>/',views.UpdateOrderView.as_view(),name='update_order'),
+#     path('update_status/<int:order_id>/',views.UpdateOrderStatusView.as_view(),name='update_status'),
+#     path('user/<int:user_id>/orders',views.UserOrdersView.as_view(),name='users_orders'),
   
-]
+# ]
 
 
