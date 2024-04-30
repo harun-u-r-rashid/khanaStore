@@ -15,6 +15,8 @@ class Category(models.Model):
                 return f"{self.category_name}"
         
 
+
+
 class Food(models.Model):
         category = models.ForeignKey(Category, on_delete = models.CASCADE)
         food_name = models.CharField(max_length = 20, unique=True)
