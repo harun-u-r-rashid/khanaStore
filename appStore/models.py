@@ -19,7 +19,7 @@ class Food(models.Model):
         category = models.ForeignKey(Category, on_delete = models.CASCADE)
         food_name = models.CharField(max_length = 20, unique=True)
         food_image = models.ImageField(upload_to='photos/food')
-        description = models.TextField(max_length=150, null= True, blank=True)
+        description = models.TextField(max_length=150, null=True, blank=True)
         slug = models.SlugField(max_length = 30)
         price = models.IntegerField()
         is_available = models.BooleanField(default = True)
