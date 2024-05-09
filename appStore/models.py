@@ -41,7 +41,6 @@ class Review(models.Model):
         rating = models.CharField(max_length=6, choices = STAR)
         review_date = models.DateTimeField(auto_now_add = True)
 
-
         def __str__(self):
                 return f"{self.user.username} reviewed to {self.food.food_name}"
         

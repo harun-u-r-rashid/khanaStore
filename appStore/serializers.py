@@ -11,7 +11,7 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class FoodSerializer(serializers.ModelSerializer):
-        category = serializers.StringRelatedField(many = False)
+       
         class Meta:
                 model = Food
                 fields = '__all__'
