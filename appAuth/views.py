@@ -38,7 +38,7 @@ class RegistrationApiView(APIView):
                         token = default_token_generator.make_token(user)
                         uid = urlsafe_base64_encode(force_bytes(user.pk))
 
-                        confirm_link =  f"http://127.0.0.1:8000/active/{uid}/{token}"
+                        confirm_link =  f"https://khanastore.onrender.com/active/{uid}/{token}"
                         email_subject = "Confirm your email"
                         email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
                         email = EmailMultiAlternatives(email_subject, '', to=[user.email])
@@ -63,9 +63,11 @@ def activate(request, uidb64, token):
         if user is not None and default_token_generator.check_token(user, token):
                user.is_active = True
                user.save()
-               return redirect('login')
+               return redirect('https://khanastore.onrender.com/login.html')
         else:
                return redirect('register')
+
+       
           
 
 
