@@ -26,47 +26,89 @@ class UserViewSet(viewsets.ModelViewSet):
        
 
 
+# class RegistrationApiView(APIView):
+#         serializer_class = RegistrationSerializer
+
+#         def post(self, request):
+#                 serializer = self.serializer_class(data = request.data)
+
+#                 if serializer.is_valid():
+#                         user = serializer.save()
+
+#                         token = default_token_generator.make_token(user)
+#                         uid = urlsafe_base64_encode(force_bytes(user.pk))
+
+#                         confirm_link =  f"http://127.0.0.1:8000/active/{uid}/{token}"
+#                         email_subject = "Confirm your email"
+#                         email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
+#                         email = EmailMultiAlternatives(email_subject, '', to=[user.email])
+#                         email.attach_alternative(email_body, "text/html")
+#                         email.send()
+#                         return Response("Check your email for confirmation")
+#                 return Response(serializer.errors)
+  
+
+# def activate(request, uidb64, token):
+
+
+
+#         try:
+#             uid = urlsafe_base64_decode(uidb64).decode()
+#             user = User._default_manager.get(pk = uid)
+
+#         except(User.DoesNotExist):
+#                user = None
+
+#         if user is not None and default_token_generator.check_token(user, token):
+#                user.is_active = True
+#                user.save()
+#                return redirect('http://127.0.0.1:8000/login.html')
+#         else:
+#                return redirect('register')
+
+
+
+
+
+
 class RegistrationApiView(APIView):
-        serializer_class = RegistrationSerializer
-
-        def post(self, request):
-                serializer = self.serializer_class(data = request.data)
-
-                if serializer.is_valid():
-                        user = serializer.save()
-
-                        token = default_token_generator.make_token(user)
-                        uid = urlsafe_base64_encode(force_bytes(user.pk))
-
-                        confirm_link =  f"https://friendly-chimera-8a481a.netlify.app/user/active/{uid}/{token}"
-                        email_subject = "Confirm your email"
-                        email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
-                        email = EmailMultiAlternatives(email_subject, '', to=[user.email])
-                        email.attach_alternative(email_body, "text/html")
-                        email.send()
-                        return Response("Check your email for confirmation")
-                return Response(serializer.errors)
-
-
-
-
+    serializer_class = RegistrationSerializer
     
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        
+        if serializer.is_valid():
+            user = serializer.save()
+            print(user)
+            token = default_token_generator.make_token(user)
+            print("token ", token)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            print("uid ", uid)
+            confirm_link = f"http://127.0.0.1:8000/active/{uid}/{token}"
+            email_subject = "Confirm Your Email"
+            email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
+            
+            email = EmailMultiAlternatives(email_subject , '', to=[user.email])
+            email.attach_alternative(email_body, "text/html")
+            email.send()
+            return Response("Check your mail for confirmation")
+        return Response(serializer.errors)
 
-def activate(request, uidb64, token):
-        try:
-            uid = urlsafe_base64_decode(uidb64).decode()
-            user = User._default_manager.get(pk = uid)
 
-        except(User.DoesNotExist):
-               user = None
-
-        if user is not None and default_token_generator.check_token(user, token):
-               user.is_active = True
-               user.save()
-               return redirect('https://friendly-chimera-8a481a.netlify.app/login.html')
-        else:
-               return redirect('register')
-
+def activate(request, uid64, token):
+    try:
+        uid = urlsafe_base64_decode(uid64).decode()
+        user = User._default_manager.get(pk=uid)
+    except(User.DoesNotExist):
+        user = None 
+    
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        return redirect('login')
+    else:
+        return redirect('register')
+    
        
           
 

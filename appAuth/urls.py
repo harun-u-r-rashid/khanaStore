@@ -10,10 +10,8 @@ router.register('users', UserViewSet)
 urlpatterns = [
         path("", include(router.urls)),
         path('register/', RegistrationApiView.as_view(), name='register'),
-        path('active/<uidb64>/<token>/', activate, name='active'),
+        path('active/<uid64>/<token>/', activate, name='active'),
         path('login/', LoginApiView.as_view(), name = 'login'),
         path('logout/', LogoutAPIView.as_view(), name='logout'),
-        path('contact/', ContactView.as_view(), name='contact')
-        
-      
+        path('contact/', ContactView.as_view(), name='contact')  
 ]
