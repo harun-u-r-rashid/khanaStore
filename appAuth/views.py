@@ -23,54 +23,6 @@ class UserViewSet(viewsets.ModelViewSet):
        serializer_class = UserSerializer
 
 
-       
-
-
-# class RegistrationApiView(APIView):
-#         serializer_class = RegistrationSerializer
-
-#         def post(self, request):
-#                 serializer = self.serializer_class(data = request.data)
-
-#                 if serializer.is_valid():
-#                         user = serializer.save()
-
-#                         token = default_token_generator.make_token(user)
-#                         uid = urlsafe_base64_encode(force_bytes(user.pk))
-
-#                         confirm_link =  f"http://127.0.0.1:8000/active/{uid}/{token}"
-#                         email_subject = "Confirm your email"
-#                         email_body = render_to_string('confirm_email.html', {'confirm_link' : confirm_link})
-#                         email = EmailMultiAlternatives(email_subject, '', to=[user.email])
-#                         email.attach_alternative(email_body, "text/html")
-#                         email.send()
-#                         return Response("Check your email for confirmation")
-#                 return Response(serializer.errors)
-  
-
-# def activate(request, uidb64, token):
-
-
-
-#         try:
-#             uid = urlsafe_base64_decode(uidb64).decode()
-#             user = User._default_manager.get(pk = uid)
-
-#         except(User.DoesNotExist):
-#                user = None
-
-#         if user is not None and default_token_generator.check_token(user, token):
-#                user.is_active = True
-#                user.save()
-#                return redirect('http://127.0.0.1:8000/login.html')
-#         else:
-#                return redirect('register')
-
-
-
-
-
-
 class RegistrationApiView(APIView):
     serializer_class = RegistrationSerializer
     
@@ -105,13 +57,11 @@ def activate(request, uid64, token):
     if user is not None and default_token_generator.check_token(user, token):
         user.is_active = True
         user.save()
-        return redirect('login')
+        return redirect('http://127.0.0.1:5501/frontEnd/login.html')
     else:
         return redirect('register')
     
        
-          
-
 
 class LoginApiView(APIView):
        def post(self, request):
@@ -144,7 +94,7 @@ class LogoutAPIView(APIView):
 
 
 
-
+       
 class ContactView(APIView):
        def post(self, request):
               serializer = ContactSerializer(data = request.data)

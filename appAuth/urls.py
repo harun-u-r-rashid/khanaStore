@@ -15,3 +15,4 @@ urlpatterns = [
         path('logout/', LogoutAPIView.as_view(), name='logout'),
         path('contact/', ContactView.as_view(), name='contact')  
 ]
+

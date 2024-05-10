@@ -20,6 +20,7 @@ class FoodSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
         user = serializers.StringRelatedField(many=False)
+        food = serializers.StringRelatedField(many=False)
         class Meta:
                 model = Review
                 fields = '__all__'

@@ -45,3 +45,4 @@ class Review(models.Model):
                 return f"{self.user.username} reviewed to {self.food.food_name}"
         
 
+
