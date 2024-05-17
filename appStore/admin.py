@@ -5,7 +5,6 @@ from .models import  Category,Food, Review
 
 class CategoryAdmin(admin.ModelAdmin):
         prepopulated_fields = {'slug':('category_name',)}
-
         list_display = ['slug', 'category_name']
 
 

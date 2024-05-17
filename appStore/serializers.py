@@ -11,12 +11,10 @@ class CategorySerializer(serializers.ModelSerializer):
 
 
 class FoodSerializer(serializers.ModelSerializer):
-       
         class Meta:
                 model = Food
                 fields = '__all__'
-
-
+                
 
 class ReviewSerializer(serializers.ModelSerializer):
         user = serializers.StringRelatedField(many=False)
@@ -25,4 +23,11 @@ class ReviewSerializer(serializers.ModelSerializer):
                 model = Review
                 fields = '__all__'
 
+
+class AddReviewSerializer(serializers.ModelSerializer):
+        class Meta:
+                model = Review
+                fields = '__all__'
+
+                
 

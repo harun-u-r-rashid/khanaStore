@@ -6,14 +6,13 @@ from django.urls import path, include
 
 router = DefaultRouter()
 router.register('food', FoodViewSet)
-# router.register('review', ReviewViewSet)
+router.register('reviews', ReviewViewSet)
 router.register('category', CategoryViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
     path('<int:pk>/review/', ReviewList.as_view(), name="foodReview"),
-    path('<int:pk>/review/add/', ReviewAdd.as_view(), name='addReview'),
-    
+    path('reviewAdd/<int:pk>/', ReviewAdd.as_view(), name='addReview'), 
 ]
 
 

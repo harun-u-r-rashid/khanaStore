@@ -1,35 +1,12 @@
-# from django.contrib import admin
+from django.contrib import admin
 
-# from .models import Order, OrderItem
-
-
-# class OrderAdmin(admin.ModelAdmin):
-#         list_display = ['user', 'status']
+from .models import Order
 
 
-# class OrderItemAdmin(admin.ModelAdmin):
-#         list_display = ['order', 'food', 'quantity']
+class OrderAdmin(admin.ModelAdmin):
+        list_display = ['user', 'get_food_slug']
+        def get_food_slug(self, obj):
+                return obj.food.slug if obj.food else None
+        get_food_slug.short_description = 'slug'
 
-
-# admin.site.register(Order, OrderAdmin)
-# admin.site.register(OrderItem, OrderItemAdmin)
-
-
-
-# from django.contrib import admin
-# from .models import Order
-
-# # Register your models here.
-
-
-
-# class OrderAdmin(admin.ModelAdmin):
-#     list_display=['id','foodName', 'status']
-#     list_filter=['orderDate','status']
-
-#     def foodName(self, obj):
-#         return obj.food.food_name
-    
-   
-
-# admin.site.register(Order, OrderAdmin)
+admin.site.register(Order, OrderAdmin)

@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.exceptions import ValidationError
+from rest_framework.authentication import TokenAuthentication
 
 class FoodViewSet(viewsets.ModelViewSet):
         queryset = Food.objects.all()
@@ -44,12 +45,15 @@ class ReviewList(generics.ListAPIView):
 class ReviewAdd(generics.CreateAPIView):
         serializer_class = ReviewSerializer
         permission_classes = [IsAuthenticated]
+        authentication_classes = [TokenAuthentication]
 
         def get_queryset(self):
                 return Review.objects.all()
         
         def perform_create(self, serializer):
                 pk = self.kwargs.get('pk')
+                print(pk)
+                
                 review = Food.objects.get(pk = pk)
                 user = self.request.user
                 reviewExist = Review.objects.filter(user = user, food = review)

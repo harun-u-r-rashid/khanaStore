@@ -11,3 +11,18 @@ class CartSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
+class CartQuantityUpdateSerializer(serializers.ModelSerializer):
+    quantity = serializers.IntegerField()
+    class Meta:
+        model = Cart
+        fields = ['quantity']
+
+
+
+
+class CartDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Cart
+        fields = '__all__'
+

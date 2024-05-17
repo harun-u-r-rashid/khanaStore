@@ -1,20 +1,38 @@
-# from .models import Order, OrderItem
-# from rest_framework import serializers
-# from appStore.models import Food
-# from django.db import transaction
-# from appCart.models import Cart, CartItem
-# class SimpleProductSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Food
-#         fields = ["id","food_name", "price"]
-        
+from .models import Order
+from rest_framework import serializers
+from appStore.models import Food
 
 
-# class OrderItemSerailizer(serializers.ModelSerializer):
-#         food = SimpleProductSerializer()
-#         class Meta:
-#                 model = OrderItem
-#                 fields = ['id', 'food', 'quantity']
+
+
+
+
+class OrderSerailizer(serializers.ModelSerializer):
+        class Meta:
+                model = Order
+                fields = '__all__'
+
+
+
+class OrderDeleteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -40,7 +58,7 @@
 #             raise serializers.ValidationError("Sorry your cart is empty")
         
 #         return cart_id
-    
+   
     
     
 #     def save(self, **kwargs):
